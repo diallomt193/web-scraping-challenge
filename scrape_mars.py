@@ -15,7 +15,7 @@ def scrape():
     # First, create a empty dictionary to store the scraped data
     scraped_data = {}
 
-    url_nasa = 'https://redplanetscience.com'
+    url_nasa = 'https://redplanetscience.com/'
     browser.visit(url_nasa)
 
     time.sleep(1)
@@ -44,7 +44,7 @@ def scrape():
 
     # ######JPL Mars Space Images—Featured Image
 
-    url = 'https://spaceimages-mars.com'
+    url = 'https://spaceimages-mars.com/'
     browser.visit(url)
 
     #Assign the HTML content of the page to a variable
@@ -70,7 +70,7 @@ def scrape():
 
     # #####Mars Facts
 
-    url_mars_facts = 'https://galaxyfacts-mars.com'
+    url_mars_facts = 'https://galaxyfacts-mars.com/'
 
     # Use Pandas to automatically scrape any tabular data from a page.
     tables = pd.read_html(url_mars_facts)
@@ -101,7 +101,7 @@ def scrape():
     # #########Mars Hemispheres
 
     # URL
-    url_mars_hemispheres = "https://marshemispheres.com"
+    url_mars_hemispheres = "https://marshemispheres.com/"
 
     # Use the browser to visit the url
     browser.visit(url_mars_hemispheres)
@@ -111,42 +111,51 @@ def scrape():
 
     results= soup.find_all('div',class_='description')
 
-    list_hemispheres = []
-    for i in range(len(results)):
-        list_hemispheres.append(results[i].a.h3.text)
+    # list_hemispheres = []
+    # for i in range(len(results)):
+    #     list_hemispheres.append(results[i].a.h3.text)
 
-    list_hemispheres
+    # list_hemispheres
+
+    urls = []
+    titles = []
+    for item in results:
+        urls.append(url_mars_hemispheres + item.find('a')['href'])
+        titles.append(item.find('h3').text.strip())
+    print(urls)
+    titles
+
+    browser.visit(urls[0])
+    html = browser.html
+    soup = BeautifulSoup(html, 'html.parser')
+    image = url_mars_hemispheres+soup.find('img',class_='wide-image')['src']
+    image
+
+    img_urls = []
+    for image in urls:
+        browser.visit(image)
+        html = browser.html
+        soup = BeautifulSoup(html, 'html.parser')
+#     savetofile(textfilename,soup.prettify())
+        image = url_mars_hemispheres+soup.find('img',class_='wide-image')['src']
+        img_urls.append(image)
+    
+    img_urls
 
     hemisphere_image_urls = []
 
-# Create a list of dictionaries for each hemisphere
-    for i in range(len(list_hemispheres)):
+    for i in range(len(titles)):
+        hemisphere_image_urls.append({'title':titles[i],'img_url':img_urls[i]})
 
-        # Use the browser to visit the url
-        browser.click_link_by_partial_text(list_hemispheres[i])
-        
-        
-        html = browser.html
-        soup = BeautifulSoup(html, 'html.parser')
-
-        
-        results_new = soup.find_all('li')
-
-
-        # Append the dictionary with the image url string and the hemisphere title to a list.
-        for n in range(len(results_new)):
-            if results_new[n].a.text == 'Sample':
-                hemisphere_image_urls.append({"title": list_hemispheres[i].replace("Hemisphere Enhanced", 'Hemisphere'), "img_url": results_new[0].a['href']})
-                
-        # Use the browser to visit the url
-        browser.visit(url_mars_hemispheres)
+    hemisphere_image_urls
 
 # Create a dictionary with the scraped data
-    mars_hemisphere = {"ListImages": hemisphere_image_urls}
-    mars_hemisphere
+    mars_hemisphere_images = {"ListImages": hemisphere_image_urls}
+    mars_hemisphere_images
 
 # Save the scraped data to an entry of the dictionary
     scraped_data["ListImages"] = hemisphere_image_urls
+
 
 #close browser
     browser.quit()
