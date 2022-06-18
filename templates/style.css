@@ -1,52 +1,125 @@
-/* Giving the body the specified background color, adding font sizes for the h1 and h3 elements we'll be using */
-body {
-    background: #f1f1f1;
-  }
-  
-  h1 {
-    font-size: 80px;
-  }
-  
-  h3 {
-    font-size: 30px;
-  }
-  
- 
-  
-  /* Styling the header, giving it a height, a background color, and some top padding */
-  .head {
-    height: 200px;
-    padding-top: 20px;
-    background: #a05a5a;
-  }
-  
-  /* Centering our h1 tag inside our header, giving it a little padding, removing its margin */
-  .head title {
-    padding: 60px;
-    margin: 0;
-    color: rgb(129, 16, 235);
-    background-color: cornsilk;
+/* Giving the body the specified background color, adding font sizes for the h3 and h5 elements we'll be using */
+body{
+	background-color: lightgray;
+}
+
+/* ############################# Bootstrap Container ############################# */
+/* ############################################################################### */
+
+
+.container{
+        /* border: 1px solid blue; */
+        padding: 5px;
+        margin-top: 20px;
+        background-color: white;
+        /* margin-right: 5%; */
+    }
+
+
+/* ############################# Bootstrap Row ############################# */
+/* ######################################################################### */
+
+
+.row {
+    /* border: 1px purple solid; */
+    /* border-style: solid; */
+    /* border-color:purple; */
+    /* background-color: white; */
+    padding: 5px;
+    margin: 10px;
+}
+
+/* ############################# Bootstrap Column ############################# */
+/* ############################################################################ */
+
+
+.col {
+    /* border: 1px solid yellow; */
+    /* background-color: white; */
+}
+
+
+
+
+/* ############################# Article ############################# */
+/* ################################################################### */
+
+
+
+article{
+    /* border: 1px green solid; */
+	/* background-color: white; */
+    /* margin-top: 15px; */
+    /* padding-right: 30px; */
+    /* border-style: solid; */
+    /* border-color: tomato; */
+}
+
+
+/* ############################# h1 ############################# */
+/* ############################################################## */
+
+
+h3{
+    /* border: 1px pink solid; */
+    /* font-family: 'Times New Roman', Times, serif; */
+    font-weight: bold;
+    /* margin-left: 35px; */
+    /* margin-bottom: 25px; */
+    /* padding: 15px; */
+    /* font-size: 40px; */
+    /* color: darkcyan; */
+    background-color: none;
+    text-align: left;
+    text-decoration: none;
+    /* display: inline; */
+    white-space: nowrap;
+    /* border-style: solid; */
+    /* border-color: tomato; */
+}
+
+h5 {
+    margin-top: 10px;
+}
+
+/* style=“max-width: 450px; max-height: 100px; font-size: 15px; margin-bottom: 50px;” */
+
+
+/* ############################# paragraph (paragraph) ############################# */
+/* ################################################################################# */
+
+
+
+p{
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-size: 16px;
+    text-align: justify;
+}
+
+
+
+
+#headline{
+    margin-left: 13px;
+    /* border: 1px black solid; */
+}
+
+#hemisphere{
     text-align: center;
-  }
-  
-  
-  
-  /* Adding media queries to show the drop-down, and hide the navbar when the screen is smaller than 480 pixels */
-  @media (max-width: 480px) {
-    .navbar li {
-      padding: 10px;
-    }
-  
-    .post {
-      margin-right: 30px;
-      margin-left: 30px;
-    }
-  
-    .navbar ul {
-      visibility: hidden;
-    }
-  
-    #nav-select {
-      visibility: visible;
-    }
-  }
+}
+
+.table-striped{
+    /* font-size: 25px; */
+    /* border: 1pt magenta solid; */
+}
+
+img{
+    /* height: 100px; */
+    width: 144px;
+    /* border: 55px; */
+    /* margin-left: 5px; */
+    /* margin-right: 35px; */
+    /* padding: 5px; */
+    /* border: 1px solid tomato; */
+    padding: 0%;
+}
