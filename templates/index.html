@@ -50,10 +50,10 @@
                         <hr>
                         <!-- <div class="borderbox"> -->
                         <div class="container">
-                            {% for img_url in mission_to_mars.ListImages %}
+                            {% for X in mission_to_mars.ListImages %}
                             <div class="row">
                                 <div class="col">
-                                    <img class="img-fluid" src="{{ mission_to_mars.ListImages}}" style="width:20%">
+                                    <img class="img-fluid" src="{{ X.img_url }}" style="width:20%">
                                     <br /><br />
                                     <p>{{mission_to_mars.title}}</p>
                                     <br />
